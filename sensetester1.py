@@ -1,18 +1,11 @@
 from sense_hat import SenseHat #imports the SenseHat
 sense=SenseHat()
-import time
 
-#sense.clear()
 
-x=0
-y=0
-charx=0
+charx=0  #Creates initial values for the x and y axis
 chary=0
 
-
-#sense.set_pixel(charx,chary,(101,67,33))
-
-sense.set_pixel(1,2,(255,100,0))
+sense.set_pixel(1,2,(255,100,0)) #Assigns color values to pixels
 sense.set_pixel(1,4,(255,100,0))
 sense.set_pixel(1,6,(255,100,0))
 sense.set_pixel(2,4,(255,100,0))
@@ -32,12 +25,12 @@ sense.set_pixel(7,3,(255,100,0))
 
 
 while True:
-    for event in sense.stick.get_events():
+    for event in sense.stick.get_events():   #Creates joystick system to correspond to direction
         if event.action == 'pressed' and event.direction == 'right':
             charx += 1
             sense.set_pixel(charx,chary,(101,67,33))
             test=charx-1
-            sense.set_pixel(test,chary,(0,0,0))
+            sense.set_pixel(test,chary,(0,0,0)) #Deletes the color in the previous box. Clears it
         if event.action == 'pressed' and event.direction == 'left':
             charx -= 1
             sense.set_pixel(charx,chary,(101,67,33))
